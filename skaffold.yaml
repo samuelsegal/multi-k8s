@@ -8,7 +8,11 @@ build:
           context: client
           docker:
               dockerfile: Dockerfile.dev
-        sync:
-            '**/*.js'
-            '**/*.css'
-            '**/*.html'
+          sync:
+              '**/*.js': .
+              '**/*.css': .
+              '**/*.html': .
+deploy:
+    kubectl:
+        manifests:
+            - k8s/client-deploiyment.yaml
